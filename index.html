@@ -18,6 +18,14 @@
                 margin-top: 30%;
             }
             
+            #footer {
+                bottom: 0px;
+                position: absolute;
+                text-align: center;
+                left: 0;
+                right: 0;
+            }
+            
             button {
                 border-radius: 15px;
                 background-image: -webkit-linear-gradient(top, #5d1070, #000000);  
@@ -48,13 +56,24 @@
             
             function generate () {
                 var projectTypes = ["game"];
-                var gameGenres = ["FPS", "platformer", "idle", "sandbox", "strategy", "action", "shoot 'em up", "stealth", "adventure", "RPG", "simulation", "tower defence"];
-                var things = ["cookies", "apples", "candies", "bananas", "mushrooms", "fishes", "nuclear waste", "books", "enemies", "brains", "coins"];
-                var personality = ["good", "nice", "friendly", "mean", "evil"];
+                var gameGenres = ["FPS", "platformer", "idle", "sandbox", "strategy", "action", "shoot 'em up", "stealth", "adventure", "RPG", "simulation", "tower defence", "racing"];
+                var foods = ["cookies", "apples", "candies", "bananas", "mushrooms", "fishes", "nuclear waste", "books", "brains"];
+                var collectibles = ["coins", "gems", "weapons", "gold", "spells", "calculators", "stones"];
+                var enemies = ["enemies", "yourself", "Bowser", "AIs", "dragons", "your nemesis", "turrets", "racists"];
+                var personality = ["good", "nice", "friendly", "mean", "evil", "crazy", "dead", "pixelated", "free"];
+                var places = ["world wonders", "houses", "buildings", "bridges", "forests", "parks"];
+                var movement = ["cars", "planes", "trains", "buses", "bikes", "motorbikes"];
+                
+                var things = [rand(foods), (Math.random() > 0.5 ? "" : rand(personality)) + rand(enemies), rand(places), rand(movement)];
+                var earnables = [rand(foods), rand(collectibles)];
+                
                 var beings = ["god", "ninja", "progammer", "butterfly", "vampire", "owl", "tree", "magician"];
-                var goalVerbs = ["survive", "evolve", "become " + article(rand(personality)) + " " + rand(beings), "get " + rand(things)];
-                var doingVerbs = ["shoot", "eat", "kill", "throw", "spend time with"]
+                var doingVerbs = ["shoot", "eat", "kill", "throw", "spend time with", "explode", "kiss", "destroy", "hug", "protect", "burn", "collect"];
                 var must = ["have to", "need to", "must", "can"];
+                
+                var adjectives = ["useless", "useful", "waste of time", "crazy", "stupid", "clever", "awesome", "cool"];
+                
+                var goalVerbs = ["survive", "evolve", "become " + article(rand(personality)) + " " + rand(beings), "get " + rand(earnables), "devolve", "win the game", "die happily", "be able to sleep", "start a new project", "find out everything you did was " + rand(adjectives)];
                 
                 var type = rand(projectTypes);
                 
@@ -66,12 +85,17 @@
                     idea += rand(must) + " " + rand(doingVerbs) + " " + rand(things) + " to " + rand(goalVerbs);
                     idea += ".";
                 }
-                
+                if (Math.random() < 0.001) idea = "<insert a cool idea here>";
+                else if (Math.random() < 0.001) idea = "a game where is an AI saying 'there will be cake'";
+                else if (Math.random() < 0.001) idea = "a game where you have to press Alt + F4 to move";
                 document.getElementById("idea").innerHTML = idea;
             }
         </script>
         
-        <center><h1 id="idea"></h1>
-        <button id="gen" onclick="generate()">Generate a new idea!</button></center>
+        <center>
+            <h1 id="idea"></h1>
+            <button id="gen" onclick="generate()">Generate a new idea!</button>
+            <h3 id="footer">Copyright &copy; - 2015 Juha Harviainen ("Kalakuh");</h3>
+        </center>
     </body>
 </html>
