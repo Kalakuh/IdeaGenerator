@@ -64,7 +64,7 @@
                 var places = ["world wonders", "houses", "buildings", "bridges", "forests", "parks"];
                 var movement = ["cars", "planes", "trains", "buses", "bikes", "motorbikes"];
                 
-                var things = [rand(foods), (Math.random() > 0.5 ? "" : rand(personality)) + rand(enemies), rand(places), rand(movement)];
+                var things = [rand(foods), (Math.random() > 0.5 ? "" : rand(personality) + " ") + rand(enemies), rand(places), rand(movement)];
                 var earnables = [rand(foods), rand(collectibles)];
                 
                 var beings = ["god", "ninja", "progammer", "butterfly", "vampire", "owl", "tree", "magician"];
