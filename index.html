@@ -1,0 +1,77 @@
+<html>
+    <!-- Copyright (c) - 2015 Juha Harviainen ("Kalakuh") -->
+    <head>
+        <title>
+            Idea Generator [v1.0] ~ Kalakuh
+        </title>
+        <style>
+            * {
+                font-family: verdana, "comic sans ms", georgia; 
+                color: white;
+            }
+            
+            body {
+                background-image: -webkit-linear-gradient(top, #5d1070, #000000);   
+            }
+            
+            #idea {
+                margin-top: 30%;
+            }
+            
+            button {
+                border-radius: 15px;
+                background-image: -webkit-linear-gradient(top, #5d1070, #000000);  
+                border: 2px solid #5d1070;
+                font-size: 30px;
+                font-family: verdana, "comic sans ms", georgia; 
+            }
+            button:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body onload="generate()">
+        <script>
+            function article (word) {
+                var vocals = ['a', 'e', 'i', 'o', 'u', 'y'];
+                
+                if (vocals.indexOf(word.charAt(0).toLowerCase()) == -1) {
+                    return "a " + word;
+                } else {
+                    return "an " + word;   
+                }
+            }
+            
+            function rand (arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+            
+            function generate () {
+                var projectTypes = ["game"];
+                var gameGenres = ["FPS", "platformer", "idle", "sandbox", "strategy", "action", "shoot 'em up", "stealth", "adventure", "RPG", "simulation", "tower defence"];
+                var things = ["cookies", "apples", "candies", "bananas", "mushrooms", "fishes", "nuclear waste", "books", "enemies", "brains", "coins"];
+                var personality = ["good", "nice", "friendly", "mean", "evil"];
+                var beings = ["god", "ninja", "progammer", "butterfly", "vampire", "owl", "tree", "magician"];
+                var goalVerbs = ["survive", "evolve", "become " + article(rand(personality)) + " " + rand(beings), "get " + rand(things)];
+                var doingVerbs = ["shoot", "eat", "kill", "throw", "spend time with"]
+                var must = ["have to", "need to", "must", "can"];
+                
+                var type = rand(projectTypes);
+                
+                var idea = "";
+                
+                if (type = "game") {
+                    var genre = rand(gameGenres);
+                    idea += article(genre) + " game where you ";
+                    idea += rand(must) + " " + rand(doingVerbs) + " " + rand(things) + " to " + rand(goalVerbs);
+                    idea += ".";
+                }
+                
+                document.getElementById("idea").innerHTML = idea;
+            }
+        </script>
+        
+        <center><h1 id="idea"></h1>
+        <button id="gen" onclick="generate()">Generate a new idea!</button></center>
+    </body>
+</html>
