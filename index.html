@@ -63,10 +63,10 @@
                 var enemies = ["enemies", "yourself", "Bowser", "AIs", "dragons", "your nemesis", "turrets", "racists"];
                 var personality = ["good", "nice", "friendly", "mean", "evil", "crazy", "dead", "pixelated", "free"];
                 var places = ["world wonders", "houses", "buildings", "bridges", "forests", "parks"];
-                var movement = ["cars", "planes", "trains", "buses", "bikes", "motorbikes"];
+                var movement = ["cars", "planes", "trains", "buses", "bikes", "motorbikes", "spaceships"];
                 
                 var enemy = rand(enemies);
-                var things = [rand(foods), ((Math.random() > 0.5 && (enemy != "your nemesis")) ? "" : rand(personality) + " ") + enemy, rand(places), rand(movement)];
+                var things = [rand(foods), ((Math.random() > 0.5 || (enemy == "your nemesis")) ? "" : rand(personality) + " ") + enemy, rand(places), rand(movement)];
                 var earnables = [rand(foods), rand(collectibles)];
                 
                 var beings = ["god", "ninja", "progammer", "butterfly", "vampire", "owl", "tree", "magician"];
